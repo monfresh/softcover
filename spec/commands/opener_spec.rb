@@ -12,6 +12,6 @@ describe Softcover::Commands::Opener do
 
     Softcover::Commands::Opener.open!
 
-    expect(opened).to be_true
+    expect(opened).to be_truthy
   end
 end

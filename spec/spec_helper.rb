@@ -15,7 +15,8 @@ require 'softcover/utils'
 require 'softcover/config'
 require 'softcover/server/app'
 require 'softcover/commands/publisher'
-Softcover::Output.silence!
+require 'rspec/its'
+#Softcover::Output.silence!
 
 # Load support files.
 Dir.glob(File.join(File.dirname(__FILE__), "./support/**/*.rb")).each do |f|
@@ -23,6 +24,9 @@ Dir.glob(File.join(File.dirname(__FILE__), "./support/**/*.rb")).each do |f|
 end
 
 RSpec.configure do |config|
+  config.example_status_persistence_file_path = './tmp/rspec-examples.txt'
+  config.run_all_when_everything_filtered = true
+
   include Softcover::Utils
   config.expect_with :rspec do |c|
     c.syntax = :expect
@@ -38,7 +42,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    Softcover::Output.silence!
+    #Softcover::Output.silence!
     Softcover::Commands::Server.no_listener = true
   end
 
