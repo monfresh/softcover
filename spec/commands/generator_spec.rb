@@ -22,7 +22,7 @@ describe Softcover::Commands::Generator do
     end
 
     it "should copy files" do
-      expect(Softcover::Commands::Generator.verify!).to be_true
+      expect(Softcover::Commands::Generator.verify!).to be_truthy
     end
 
     describe "book.yml" do
